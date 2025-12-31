@@ -243,8 +243,7 @@
           transform: translate(-5%, -5%) scale(1);
         }
       }
-
-      .hero-subtitle {
+        .hero-subtitle {
         font-family: var(--f-body);
         font-size: 0.85rem;
         text-transform: uppercase;
@@ -252,6 +251,10 @@
         margin-top: 2.5rem;
         color: var(--c-gray);
         z-index: 2;
+        text-align: center; /* Added to center text on mobile */
+        padding-left: 0.5em; /* Added to balance the letter-spacing visually */
+        line-height: 1.5; /* Added to prevent lines touching if they wrap */
+        padding-inline: 1rem; /* Added so text doesn't touch screen edges */
       }
 
       /* --- 5. GRID LAYOUT --- */
@@ -3002,4 +3005,5 @@
     </script>
   </body>
 </html>
+
 
