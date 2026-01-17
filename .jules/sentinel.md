@@ -1,0 +1,3 @@
+# SENTINEL'S JOURNAL - CRITICAL LEARNINGS ONLY
+
+(No entries yet)
