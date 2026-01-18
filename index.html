@@ -1,15 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-261ZYW3WWC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-261ZYW3WWC');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-261ZYW3WWC"></script>
+    <script src="analytics.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Maring Tribe: A Historical Profile</title>
@@ -852,31 +847,31 @@
               Lou-kwaal/Lhousa (Maring war dance). It goes like this:
             </p>
             <blockquote>
-              “Tik nahade, nahade, 
-              ‘Maring, Meiringbade,’ 
+              “Tik nahade, nahade,
+              ‘Maring, Meiringbade,’
               Nongpok - Thongakpade;
               Pheiganna chungmuk thabade;
-              Pambomna Ting-ting laobade; 
-              Chellaga nungsitgumbade, 
-              Phamlaga nungdumgumbade; 
+              Pambomna Ting-ting laobade;
+              Chellaga nungsitgumbade,
+              Phamlaga nungdumgumbade;
               Nahong-phina kabak thangne”
             </blockquote>
             <p>Translation of the verse as under:</p>
-            
+
               <blockquote>
-              “Mighty one, the Patriot, 
+              “Mighty one, the Patriot,
                 ‘Maring Meiringba;’
-                Keeper of sacred fire unquenched; 
-                Man of the east, 
-                the keeper of the Eastern Gate (watchman); 
-                Thighs thick and strong as shield; 
-                Arms strong as mighty; 
-                Runs as fast as wind, 
-                Sits as heavy as a rock; 
+                Keeper of sacred fire unquenched;
+                Man of the east,
+                the keeper of the Eastern Gate (watchman);
+                Thighs thick and strong as shield;
+                Arms strong as mighty;
+                Runs as fast as wind,
+                Sits as heavy as a rock;
                 His sword, ‘The nahong phee,’ (The swaddling/wrapping cloth on which he was
               cared and brought up with)”
                 </blockquote>
-        
+
             <p>
               Thus, historical accounts of our forefathers have been handing
               down orally from generation to generation how and why they called
@@ -2985,41 +2980,6 @@
       </div>
     </footer>
 
-    <script>
-      // --- ANIMATIONS ON SCROLL ---
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            }
-          });
-        },
-        { threshold: 0 }
-      );
-
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => observer.observe(el));
-
-      // --- SCROLL PROGRESS BAR ---
-      window.addEventListener("scroll", () => {
-        const scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop;
-        const scrollHeight =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrollPercent = (scrollTop / scrollHeight) * 100;
-        document.getElementById("scroll-line").style.width =
-          scrollPercent + "%";
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
