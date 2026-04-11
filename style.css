@@ -251,7 +251,9 @@
 
       section {
         padding: 7rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  display: block; /* Ensure it's not flexed or restricted */
+  overflow: visible; 
       }
 
       .grid-layout {
