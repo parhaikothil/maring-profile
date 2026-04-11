@@ -122,8 +122,20 @@
 
       /* --- 3. NAVIGATION --- */
       nav {
-        backdrop-filter: none; /* Temporary test */
-  background: rgba(255, 255, 255, 1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 3rem;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease;
       }
 
       .nav-logo {
@@ -239,9 +251,7 @@
 
       section {
         padding: 7rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  display: block; /* Ensure it's not flexed or restricted */
-  overflow: visible; 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
       }
 
       .grid-layout {
@@ -473,9 +483,4 @@
           opacity: 1;
           transform: translateY(0);
         }
-            /* Debugging: Force all content to show regardless of JS */
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-       }
       }
