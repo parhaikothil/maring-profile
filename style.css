@@ -483,4 +483,9 @@
           opacity: 1;
           transform: translateY(0);
         }
+            /* Debugging: Force all content to show regardless of JS */
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+       }
       }
