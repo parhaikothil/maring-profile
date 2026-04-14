@@ -466,21 +466,29 @@
       }
 
       @media (max-width: 1024px) {
+        /* Drop grid entirely — prevents the sticky-col dark bg bleeding */
         .grid-layout {
-          grid-template-columns: 1fr;
-          gap: 2rem;
+          display: block;
         }
         .sticky-col {
           position: relative;
           top: 0;
+          height: auto;
+          background: var(--c-white); /* seal against dark html background */
+          display: flex;
+          align-items: baseline;
+          gap: 0.6rem;
           margin-bottom: 1.5rem;
-          border-bottom: 1px solid #eee;
           padding-bottom: 1rem;
+          border-bottom: 1px solid rgba(0,0,0,0.07);
         }
         .chapter-num {
-          font-size: 3rem;
+          font-size: 2.8rem;
           display: inline-block;
-          margin-right: 1rem;
+          margin-bottom: 0;
+        }
+        .chapter-caption {
+          display: inline-block;
         }
         .section-title {
           margin-bottom: 0.8rem;
@@ -495,11 +503,29 @@
           font-size: 1.3rem;
           padding: 1.5rem;
         }
-        p,
-        blockquote,
-        ul,
-        .data-card {
+        p, blockquote, ul, .data-card {
           max-width: 100%;
+        }
+        /* Tables: scroll horizontally, prevent text overflow */
+        .data-card {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          padding: 1rem;
+        }
+        .table {
+          min-width: 380px;
+        }
+        .table th,
+        .table td {
+          word-break: break-word;
+          overflow-wrap: break-word;
+          hyphens: auto;
+          font-size: 0.88rem;
+          padding: 10px 8px;
+        }
+        .table td:last-child,
+        .table th:last-child {
+          min-width: 150px;
         }
       }
 
@@ -514,7 +540,6 @@
       /* --- 9. MOBILE FIXES --- */
       @media (max-width: 600px) {
 
-        /* Nav — tighter padding, prevent overflow */
         nav {
           padding: 1rem 1.2rem;
         }
@@ -528,7 +553,6 @@
           font-size: 0.65rem;
         }
 
-        /* Hero — prevent text from touching edges */
         .super-title {
           font-size: 12vw;
           padding-inline: 1rem;
@@ -541,7 +565,6 @@
           padding-inline: 1.5rem;
         }
 
-        /* Container — give enough breathing room */
         .container {
           padding: 0 1.2rem;
         }
@@ -550,7 +573,6 @@
           padding: 3rem 0;
         }
 
-        /* Typography — prevent justify from causing rivers on narrow screens */
         p {
           text-align: left;
           font-size: 1rem;
@@ -565,7 +587,6 @@
           font-size: 0.85rem;
         }
 
-        /* Drop cap — smaller on mobile so it doesn't overpower */
         .drop-cap::first-letter {
           font-size: 3.5rem;
           padding-right: 10px;
@@ -573,7 +594,7 @@
 
         blockquote {
           font-size: 1.1rem;
-          padding: 1.2rem 1.2rem;
+          padding: 1.2rem;
           margin: 2rem 0;
           max-width: 100%;
         }
@@ -582,30 +603,27 @@
           max-width: 100%;
         }
 
-        /* Data cards — ensure they don't overflow */
+        /* Tables stay scrollable even on small phones */
         .data-card {
-          padding: 1rem;
-          max-width: 100%;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
+          padding: 0.8rem 0.6rem;
+          border-radius: 8px;
+          margin: 1.5rem 0;
+        }
+
+        .table {
+          min-width: 340px;
         }
 
         .table th,
         .table td {
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           padding: 8px 6px;
         }
 
-        /* Chapter numbers — inline on mobile */
         .chapter-num {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
         }
 
-        .chapter-caption {
-          font-size: 0.75rem;
-        }
-
-        /* Orbs — reduce blur cost on mobile */
         .orb-1 {
           width: 80vw;
           height: 80vw;
@@ -616,7 +634,6 @@
           height: 60vw;
         }
 
-        /* Footer */
         footer {
           padding: 4rem 1.5rem;
         }
