@@ -66,7 +66,7 @@
       }
 
       .section-title {
-        font-size: clamp(2rem, 4vw, 2.6rem);
+        font-size: clamp(1.5rem, 4vw, 2rem);
         margin-bottom: 1.6rem;
         position: relative;
         display: inline-block;
@@ -337,50 +337,76 @@
       }
 
       /* DATA CARDS (TABLES) */
+
+/* ============================= */
+/* CLEAN MINIMAL TABLE STYLE */
+/* ============================= */
+
       .data-card {
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 16px;
+        background: #ffffff;
+        border: 1px solid rgba(0,0,0,0.06);
+        border-radius: 12px;
+        padding: 1.5rem 1.8rem;
         margin: 2.5rem 0;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-        overflow-x: auto;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         max-width: var(--w-content);
-        width: 100%;
-        backdrop-filter: blur(10px);
+        overflow-x: auto;
       }
 
-      table {
+      /* table */
+      .table {
         width: 100%;
         border-collapse: collapse;
+      }
+
+      /* remove borders */
+      .table,
+      .table th,
+      .table td {
+        border: none;
+      }
+
+      /* header */
+      .table thead {
+        border-bottom: 2px solid rgba(0,0,0,0.08);
+      }
+
+      .table th {
+        padding: 12px 10px;
+        text-align: left;
+        font-weight: 600;
+        color: #1a1a1a;
         font-size: 0.95rem;
       }
 
-      th {
-        text-align: left;
-        padding: 1.2rem 1.5rem;
-        background: var(--c-charcoal);
-        color: var(--c-white);
-        font-family: var(--f-body);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-size: 0.7rem;
+      /* body */
+      .table td {
+        padding: 12px 10px;
+        color: #444;
+        font-size: 0.95rem;
+      }
+
+      /* soft row separation */
+      .table tbody tr {
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+
+      /* very subtle zebra */
+      .table tbody tr:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+      /* hover (barely there) */
+      .table tbody tr:hover {
+        background-color: #f3f3f3;
+        transition: 0.2s ease;
+      }
+
+      /* first column accent */
+      .table td:first-child {
         font-weight: 600;
-      }
-
-      td {
-        padding: 1.2rem 1.5rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        vertical-align: middle;
-        color: var(--c-text);
-        transition: background 0.2s;
-      }
-
-      tr:last-child td {
-        border-bottom: none;
-      }
-
-      tr:hover td {
-        background-color: rgba(0, 0, 0, 0.01);
+        color: var(--c-red);
+        width: 50px;
       }
 
       /* --- 7. FOOTER --- */
@@ -484,3 +510,56 @@
           transform: translateY(0);
         }
       }
+/* --- FORCE CLEAN TABLE STYLE (FINAL OVERRIDE) --- */
+
+.data-card table,
+.data-card th,
+.data-card td {
+  border: none !important;
+}
+
+.data-card table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.data-card thead {
+  background: none !important;
+  border-bottom: 2px solid rgba(0,0,0,0.15);
+}
+
+.data-card th {
+  padding: 12px 10px;
+  font-weight: 600;
+  color: #3a2a2a;
+  font-size: 0.95rem;
+}
+
+.data-card td {
+  padding: 12px 10px;
+  color: #2c2c2c;
+  font-size: 0.95rem;
+}
+
+/* soft rows */
+.data-card tbody tr {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* zebra */
+.data-card tbody tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.25);
+}
+
+/* hover */
+.data-card tbody tr:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+/* first column */
+.data-card td:first-child {
+  color: var(--c-red);
+  font-weight: 600;
+}
