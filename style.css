@@ -446,6 +446,14 @@
         transform: translateY(0);
       }
 
+      /* Fallback if JS is disabled — show content without animation */
+      @media (scripting: none) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
       #scroll-line {
         position: fixed;
         bottom: 0;
@@ -460,12 +468,12 @@
       @media (max-width: 1024px) {
         .grid-layout {
           grid-template-columns: 1fr;
-          gap: 3rem;
+          gap: 2rem;
         }
         .sticky-col {
           position: relative;
           top: 0;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
           border-bottom: 1px solid #eee;
           padding-bottom: 1rem;
         }
@@ -475,7 +483,7 @@
           margin-right: 1rem;
         }
         .section-title {
-          margin-bottom: 0px;
+          margin-bottom: 0.8rem;
         }
         .super-title {
           font-size: 14vw;
@@ -493,21 +501,133 @@
         .data-card {
           max-width: 100%;
         }
-        @media (prefers-reduced-motion: reduce) {
-          .reveal {
-            opacity: 1;
-            transform: none;
-          }
-        }
-        /* Fallback if JS is disabled */
+      }
+
+      /* Reduced motion - must be outside the tablet breakpoint */
+      @media (prefers-reduced-motion: reduce) {
         .reveal {
           opacity: 1;
           transform: none;
-          transition: none;
         }
-        .reveal.active {
-          opacity: 1;
-          transform: translateY(0);
+      }
+
+      /* --- 9. MOBILE FIXES --- */
+      @media (max-width: 600px) {
+
+        /* Nav — tighter padding, prevent overflow */
+        nav {
+          padding: 1rem 1.2rem;
+        }
+
+        .nav-logo {
+          font-size: 0.8rem;
+          letter-spacing: 0.1em;
+        }
+
+        .nav-progress {
+          font-size: 0.65rem;
+        }
+
+        /* Hero — prevent text from touching edges */
+        .super-title {
+          font-size: 12vw;
+          padding-inline: 1rem;
+          word-break: break-word;
+        }
+
+        .hero-subtitle {
+          font-size: 0.7rem;
+          letter-spacing: 0.3em;
+          padding-inline: 1.5rem;
+        }
+
+        /* Container — give enough breathing room */
+        .container {
+          padding: 0 1.2rem;
+        }
+
+        section {
+          padding: 3rem 0;
+        }
+
+        /* Typography — prevent justify from causing rivers on narrow screens */
+        p {
+          text-align: left;
+          font-size: 1rem;
+          max-width: 100%;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          hyphens: auto;
+        }
+
+        h3 {
+          max-width: 100%;
+          font-size: 0.85rem;
+        }
+
+        /* Drop cap — smaller on mobile so it doesn't overpower */
+        .drop-cap::first-letter {
+          font-size: 3.5rem;
+          padding-right: 10px;
+        }
+
+        blockquote {
+          font-size: 1.1rem;
+          padding: 1.2rem 1.2rem;
+          margin: 2rem 0;
+          max-width: 100%;
+        }
+
+        ul {
+          max-width: 100%;
+        }
+
+        /* Data cards — ensure they don't overflow */
+        .data-card {
+          padding: 1rem;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .table th,
+        .table td {
+          font-size: 0.85rem;
+          padding: 8px 6px;
+        }
+
+        /* Chapter numbers — inline on mobile */
+        .chapter-num {
+          font-size: 2.5rem;
+        }
+
+        .chapter-caption {
+          font-size: 0.75rem;
+        }
+
+        /* Orbs — reduce blur cost on mobile */
+        .orb-1 {
+          width: 80vw;
+          height: 80vw;
+        }
+
+        .orb-2 {
+          width: 60vw;
+          height: 60vw;
+        }
+
+        /* Footer */
+        footer {
+          padding: 4rem 1.5rem;
+        }
+
+        .footer-logo {
+          font-size: 1.1rem;
+        }
+
+        .footer-copy {
+          font-size: 0.75rem;
+          line-height: 1.6;
         }
       }
 /* --- FORCE CLEAN TABLE STYLE (FINAL OVERRIDE) --- */
