@@ -226,6 +226,22 @@ blockquote p { margin-bottom: 10px; }
 }
 .footnotes p { margin-bottom: 6px; }
 
+/* ---------- inline citations ---------- */
+.cite {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--red-deep);
+  background: var(--red-wash);
+  border: 1px solid var(--red-tint);
+  border-radius: 20px;
+  padding: 1px 9px;
+  margin: 0 1px;
+  vertical-align: 1px;
+  white-space: normal;
+}
+
 /* ---------- tables ---------- */
 .table-wrap {
   margin: 30px 0 36px;
@@ -335,4 +351,307 @@ footer {
   .contents ol { columns: 1; }
   .contents { margin-bottom: 90px; }
   .chapter { margin-bottom: 96px; }
+}
+
+/* ---------- footnote cards (match citation chips) ---------- */
+.footnotes {
+  background: var(--red-wash);
+  border: 1px solid var(--red-tint);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 26px 0 34px;
+}
+.footnotes p {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+.footnotes p:last-child { margin-bottom: 0; }
+
+/* ---------- dark mode ---------- */
+:root { color-scheme: light dark; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1A1713;        /* warm dark charcoal */
+    --ink: #EDE4D3;       /* cream */
+    --gray: #A69C8D;
+    --gray-light: #6E675C;
+    --hair: #2C2822;
+    --red: #D4594A;       /* muted brick red */
+    --red-deep: #DE8878;  /* lifted for small text on dark */
+    --red-soft: #B26A5C;
+    --red-tint: #4A2C26;  /* borders */
+    --red-wash: #26201B;  /* chip & card backgrounds */
+  }
+  .masthead-veil {
+    background: linear-gradient(180deg,
+      rgba(12, 9, 6, .40) 0%,
+      rgba(12, 9, 6, .22) 34%,
+      rgba(12, 9, 6, .60) 62%,
+      rgba(26, 23, 19, 1) 100%);  /* blends photo into the charcoal page */
+  }
+  .masthead h1 { color: #F3EADA; }
+}
+
+/* ---------- print ---------- */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.55;
+  }
+  .masthead {
+    min-height: 0;
+    display: block;
+    margin-bottom: 24pt;
+  }
+  .masthead-img {
+    position: static;
+    display: block;
+    width: 100%;
+    height: 3.2in;
+    object-fit: cover;
+  }
+  .masthead-veil { display: none; }
+  .masthead-text {
+    position: static;
+    max-width: none;
+    padding: 16pt 0 0;
+    text-align: center;
+  }
+  .masthead h1 { color: #000; text-shadow: none; }
+  .masthead-quote { color: #444; text-shadow: none; }
+  .overline { color: #8E0E0E; }
+  .contents { margin-bottom: 30pt; }
+  .contents a { text-decoration: none; color: inherit; }
+  .chapter { margin-bottom: 26pt; }
+  .ch-head, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  h2 { color: #000; }
+  h3 { color: #8E0E0E; }
+  p, blockquote, li { orphans: 3; widows: 3; }
+  blockquote { color: #333; }
+  .cite {
+    background: none;
+    border-color: #bbb;
+    color: #444;
+  }
+  .footnotes {
+    background: none;
+    border-color: #bbb;
+  }
+  .footnotes p { color: #444; }
+  .table-wrap { overflow: visible; }
+  table { font-size: 9pt; }
+  tr:hover td { background: none; }
+  a { color: inherit; text-decoration: none; }
+  footer { border-top: 2pt solid #8E0E0E; }
+}
+
+/* ---------- manual theme override (toggle button) ---------- */
+:root[data-theme="dark"] {
+  --bg: #1A1713;
+  --ink: #EDE4D3;
+  --gray: #A69C8D;
+  --gray-light: #6E675C;
+  --hair: #2C2822;
+  --red: #D4594A;
+  --red-deep: #DE8878;
+  --red-soft: #B26A5C;
+  --red-tint: #4A2C26;
+  --red-wash: #26201B;
+}
+[data-theme="dark"] .masthead-veil {
+  background: linear-gradient(180deg,
+    rgba(12, 9, 6, .40) 0%,
+    rgba(12, 9, 6, .22) 34%,
+    rgba(12, 9, 6, .60) 62%,
+    rgba(26, 23, 19, 1) 100%);
+}
+:root[data-theme="light"] {
+  --bg: #FDFDFB;
+  --ink: #1B1B19;
+  --gray: #8E8B83;
+  --gray-light: #B9B6AE;
+  --hair: #E9E7E0;
+  --red: #CC0000;
+  --red-deep: #8E0E0E;
+  --red-soft: #D96B6B;
+  --red-tint: #F0C9C9;
+  --red-wash: #FBF3F2;
+}
+[data-theme="light"] .masthead-veil {
+  background: linear-gradient(180deg,
+    rgba(12, 9, 6, .35) 0%,
+    rgba(12, 9, 6, .18) 34%,
+    rgba(12, 9, 6, .55) 62%,
+    rgba(12, 9, 6, .92) 100%);
+}
+
+/* ---------- theme toggle button ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 70;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--hair);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .14);
+}
+.theme-toggle:hover { color: var(--red); border-color: var(--red-soft); }
+
+/* ---------- footnote reference markers ---------- */
+sup.fnref {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 0;
+  padding: 0 2px;
+}
+.fnmark {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  margin-right: 2px;
+}
+
+@media print {
+  .theme-toggle { display: none !important; }
+  sup.fnref, .fnmark { color: #8E0E0E; }
+}
+
+/* ---------- contents drawer (mobile) ---------- */
+.drawer-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 70;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: none;
+  background: var(--red);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .28);
+}
+.drawer-veil {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .42);
+  z-index: 55;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .28s ease;
+}
+body.drawer-open .drawer-veil { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  background: var(--bg);
+  border-right: 1px solid var(--hair);
+  padding: 24px 20px 32px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 60;
+  transform: translateX(-103%);
+  transition: transform .28s ease;
+}
+body.drawer-open .drawer { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .drawer, .drawer-veil { transition: none; }
+}
+.drawer-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 4px 0 12px 12px;
+}
+.drawer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: ch;
+}
+.drawer-list li { margin: 0; }
+.drawer-list a {
+  display: block;
+  padding: 12px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hair);
+  border-radius: 6px;
+}
+.drawer-list li:last-child a { border-bottom: none; }
+.drawer-list a::before {
+  counter-increment: ch;
+  content: counter(ch, decimal-leading-zero);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--red);
+  margin-right: 12px;
+}
+.drawer-list a:hover,
+.drawer-list a:active { background: var(--red-wash); }
+
+/* ---------- mobile optimization ---------- */
+@media (max-width: 700px) {
+  /* slightly larger body text */
+  body { font-size: 18px; line-height: 1.85; }
+
+  /* more spacing */
+  .chapter { margin-bottom: 112px; }
+  .masthead-text { padding: 48px 24px 0; }
+  .footnotes { padding: 16px 18px; margin: 28px 0 36px; }
+  .table-wrap { margin: 32px 0 40px; }
+
+  /* TOC collapses into the drawer */
+  .contents { display: none; }
+  .drawer-btn { display: flex; }
+
+  /* larger tap targets */
+  .theme-toggle { width: 44px; height: 44px; top: 14px; right: 14px; }
+  footer a, .footnotes a { display: inline-block; padding: 4px 0; }
+}
+
+@media print {
+  .drawer, .drawer-btn, .drawer-veil { display: none !important; }
+}
+
+/* ---------- zebra striping for tables ---------- */
+tbody tr:nth-child(even) td { background: var(--red-wash); }
+tbody tr:hover td { background: var(--red-tint); }
+
+@media print {
+  tbody tr:nth-child(even) td { background: #f4f4f4; }
+  tbody tr:hover td { background: none; }
 }
